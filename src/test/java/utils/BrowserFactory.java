@@ -7,11 +7,11 @@ public class BrowserFactory {
 
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static WebDriver getDriver() {
+    public synchronized static WebDriver getDriver() {
         return driver.get();
     }
 
-    public static void setDriver(String browserName) {
+    public synchronized static void setDriver(String browserName) {
         if (browserName.equalsIgnoreCase("edge")) {
             driver.set(WebDriverManager.edgedriver().create());
         } else {
