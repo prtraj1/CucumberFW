@@ -14,8 +14,10 @@ public class Hooks {
 
     @Before
     public void setUp(){
-        PropertiesHandler prop = new PropertiesHandler(new File("global.properties"));
+        PropertiesHandler prop = new PropertiesHandler(new File("src/test/resources/global.properties"));
         BrowserFactory.setDriver(prop.getProperty("browser"));
+        BrowserFactory.getDriver().get(prop.getProperty("url"));
+        BrowserFactory.getDriver().manage().window().maximize();
     }
 
     @After
@@ -25,7 +27,7 @@ public class Hooks {
 
     @AfterStep
     public void afterStep(Scenario scenario){
-        PropertiesHandler prop = new PropertiesHandler(new File("global.properties"));
+        PropertiesHandler prop = new PropertiesHandler(new File("src/test/resources/global.properties"));
         Status status = scenario.isFailed() ? Status.FAIL : Status.PASS;
         if(prop.getProperty("screenshotsEveryStep").equalsIgnoreCase("yes") || scenario.isFailed())
             ExtentCucumberAdapter.getCurrentStep().log(status, MediaEntityBuilder.createScreenCaptureFromBase64String(

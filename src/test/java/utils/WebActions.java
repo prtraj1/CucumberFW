@@ -71,4 +71,12 @@ public class WebActions {
     public String getBase64screenshot(){
         return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
     }
+
+    public String getCurrentURL(){
+        return driver.getCurrentUrl();
+    }
+
+    public String getTitle(){
+        return driver.getTitle();
+    }
 }

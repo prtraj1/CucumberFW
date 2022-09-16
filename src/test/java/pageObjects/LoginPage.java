@@ -1,9 +1,11 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import utils.BrowserFactory;
+import utils.PropertiesHandler;
 import utils.WebActions;
+
+import java.io.File;
 
 public class LoginPage {
     private WebActions act;
@@ -26,5 +28,15 @@ public class LoginPage {
 
     public void clickLogin(){
         act.doClick(loginBtn);
+    }
+
+    public boolean isLoginPage(){
+        PropertiesHandler props = new PropertiesHandler(new File("src/test/resources/global.properties"));
+        return act.getCurrentURL().equalsIgnoreCase(props.getProperty("url"));
+    }
+
+    public boolean isHomePage(){
+        PropertiesHandler props = new PropertiesHandler(new File("src/test/resources/global.properties"));
+        return act.getCurrentURL().equalsIgnoreCase(props.getProperty("homepage"));
     }
 }
