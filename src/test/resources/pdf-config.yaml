@@ -5,7 +5,7 @@ displayFeature: true
 displayScenario: true
 displayDetailed: true
 displayAttached: true
-displayExpanded: false
+displayExpanded: true
 
 dashboardConfig:
   title: Test Automation Report

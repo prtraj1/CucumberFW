@@ -72,6 +72,8 @@ public class WebActions {
         return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
     }
 
+    public byte[] getByteScreenshot(){return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);}
+
     public String getCurrentURL(){
         return driver.getCurrentUrl();
     }

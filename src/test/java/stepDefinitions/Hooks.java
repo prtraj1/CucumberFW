@@ -30,8 +30,7 @@ public class Hooks {
         PropertiesHandler prop = new PropertiesHandler(new File("src/test/resources/global.properties"));
         Status status = scenario.isFailed() ? Status.FAIL : Status.PASS;
         if(prop.getProperty("screenshotsEveryStep").equalsIgnoreCase("yes") || scenario.isFailed())
-            ExtentCucumberAdapter.getCurrentStep().log(status, MediaEntityBuilder.createScreenCaptureFromBase64String(
-                    new WebActions(BrowserFactory.getDriver()).getBase64screenshot()
-            ).build());
+            scenario.attach(new WebActions(BrowserFactory.getDriver()).getByteScreenshot(),
+                    "image/png","");
     }
 }
