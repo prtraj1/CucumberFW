@@ -31,6 +31,6 @@ public class Hooks {
         Status status = scenario.isFailed() ? Status.FAIL : Status.PASS;
         if(prop.getProperty("screenshotsEveryStep").equalsIgnoreCase("yes") || scenario.isFailed())
             scenario.attach(new WebActions(BrowserFactory.getDriver()).getByteScreenshot(),
-                    "image/png","");
+                    "image/jpeg","");
     }
 }
